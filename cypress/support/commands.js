@@ -1,6 +1,6 @@
-import ApiCalls from "../e2e/api/helpers/api-calls";
+import ApiCalls from '../e2e/api/helpers/api-calls'
 
-const apiCalls = new ApiCalls();
+const apiCalls = new ApiCalls()
 
 // ***********************************************
 // This example commands.js shows you how to
@@ -28,6 +28,15 @@ const apiCalls = new ApiCalls();
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add("getRequest", (endpoint) => {
-  return apiCalls.get(endpoint);
-});
+Cypress.Commands.add('getRequest', (endpoint) => {
+	return apiCalls.get(endpoint)
+})
+Cypress.Commands.add('postRequest', (endpoint, body) => {
+	return apiCalls.post(endpoint, body)
+})
+Cypress.Commands.add('putRequest', (endpoint, body) => {
+	return apiCalls.put(endpoint, body)
+})
+Cypress.Commands.add('deleteRequest', (endpoint) => {
+	return apiCalls.delete(endpoint)
+})
