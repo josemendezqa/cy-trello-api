@@ -1,0 +1,15 @@
+node_modules
+*.png
+node_modules/
+screenshots/
+videos/
+mochawesome-report/
+.vscode/settings.json
+reports/
+*.DS_Store
+.idea
+logs/
+xunit.xml
+package-lock.json
+.DS_Store
+/cypress/downloads/
