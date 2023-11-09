@@ -2,6 +2,7 @@
 
 import StatusCodeValidator from '../../../helpers/status-code-validator'
 import { BoardsApiHelper } from '../helpers/boards-api-helpers'
+import { TestTags } from '../../../helpers/test-tags-constants'
 
 const validator = new StatusCodeValidator()
 const boardsApiHelper = new BoardsApiHelper()
@@ -11,11 +12,17 @@ describe('Board Test Suite', () => {
 		boardsApiHelper.deleteAllBoards()
 	})
 
-	it('Get all boards', {}, () => {
-		boardsApiHelper.getAllBoardsForOrganization().then((getResponse) => {
-			validator.http200Validations(getResponse)
-		})
-	})
+	it(
+		'Get all boards',
+		{
+			tags: [TestTags.BOARDS],
+		},
+		() => {
+			boardsApiHelper.getAllBoardsForOrganization().then((getResponse) => {
+				validator.http200Validations(getResponse)
+			})
+		}
+	)
 
 	it('Should create a board', {}, () => {
 		boardsApiHelper.createBoard().then((postResponse) => {
