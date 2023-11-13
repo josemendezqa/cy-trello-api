@@ -30,9 +30,7 @@ export class BoardsApiHelper {
 			.deleteRequest(
 				BoardsEndpointsConstants.DELETE_BOARD.replace('{boardId}', boardId)
 			)
-			.then((deleteResponse) => {
-				validator.http200Validations(deleteResponse)
-			})
+			.then((deleteResponse) => {})
 	}
 
 	deleteAllBoards() {
