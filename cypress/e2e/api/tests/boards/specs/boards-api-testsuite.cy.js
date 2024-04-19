@@ -3,9 +3,11 @@
 import StatusCodeValidator from '../../../helpers/status-code-validator'
 import { BoardsApiHelper } from '../helpers/boards-api-helpers'
 import { TestTags } from '../../../helpers/test-tags-constants'
+import { OrganizationsApiHelper } from '../../organizations/helpers/organizations-api-helper'
 
 const validator = new StatusCodeValidator()
 const boardsApiHelper = new BoardsApiHelper()
+const organizationsApiHelper = new OrganizationsApiHelper()
 
 describe('Board Test Suite', () => {
 	afterEach(() => {
@@ -18,15 +20,16 @@ describe('Board Test Suite', () => {
 			tags: [TestTags.BOARDS],
 		},
 		() => {
-			boardsApiHelper.getAllBoardsForOrganization().then((getResponse) => {
+			organizationsApiHelper.getBoardsInOrganization().then((getResponse) => {
 				validator.http200Validations(getResponse)
 			})
 		}
 	)
 
 	it('Should create a board', {}, () => {
-		boardsApiHelper.createBoard().then((postResponse) => {
-			validator.http200Validations(postResponse)
+		boardsApiHelper.createBoard().then((createResponse) => {
+			validator.http200Validations(createResponse)
+			boardsApiHelper.deleteBoardById(createResponse.body.id)
 		})
 	})
 
@@ -43,7 +46,7 @@ describe('Board Test Suite', () => {
 	it('Should delete a board', {}, () => {
 		boardsApiHelper.createBoard().then((createResponse) => {
 			boardsApiHelper
-				.deleteBoard(createResponse.body.id)
+				.deleteBoardById(createResponse.body.id)
 				.then((deleteReponse) => {
 					validator.http200Validations(deleteReponse)
 				})
