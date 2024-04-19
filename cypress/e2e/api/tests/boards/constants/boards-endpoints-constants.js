@@ -1,7 +1,6 @@
 export const BoardsEndpointsConstants = {
-	GET_ALL_ORGANIZATION_BOARDS: 'organizations/{id}/boards',
-	GET_BOARD: 'boards',
+	GET_BOARD: 'boards/{boardId}',
 	POST_BOARD: 'boards',
-	DELETE_BOARD: 'boards/{boardId}',
 	PUT_BOARD: 'boards/{boardId}',
+	DELETE_BOARD: 'boards/{boardId}',
 }

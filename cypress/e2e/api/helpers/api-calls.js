@@ -19,6 +19,8 @@ export default class ApiCalls {
 			.as(requestData.alias)
 	}
 
+	//https://api.trello.com/1/boards/undefined?key=7c3b5827c59ceeab864b285da53b833b&token=ATTAe4b5b5ba2c87340c1f786b04119a0167488d6a3963f70da0306b662ed8a5337bB41E964A
+
 	get(endpoint) {
 		return this.#sendRequest({
 			apiRequestType: 'GET',
