@@ -2,12 +2,14 @@ const { defineConfig } = require('cypress')
 const { getEnv } = require('./config/environment-handler')
 
 module.exports = defineConfig({
-  projectId: 'v4irry',
+	projectId: 'v4irry',
 	reporter: 'cypress-mochawesome-reporter',
 	reporterOptions: {
 		reportPageTitle: 'Trello API test suite report',
 	},
 	e2e: {
+		experimentalModifyObstructiveThirdPartyCode: true,
+		experimentalSessionAndOrigin: true,
 		setupNodeEvents(on, config) {
 			on('before:run', async (details) => {
 				console.log('override before:run')
