@@ -1,8 +1,7 @@
-import ApiCalls from '../e2e/api/helpers/api-calls'
-//import { loginHandler } from "./login-handler"
+import ApiCalls from "../e2e/api/helpers/api-calls"
+import { loginHandler } from "./login-handler"
 
 const apiCalls = new ApiCalls()
-
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -29,19 +28,21 @@ const apiCalls = new ApiCalls()
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('getRequest', (endpoint) => {
-	return apiCalls.get(endpoint)
-})
 Cypress.Commands.add('postRequest', (endpoint, body) => {
-	return apiCalls.post(endpoint, body)
+    return apiCalls.post(endpoint, body)
 })
-Cypress.Commands.add('putRequest', (endpoint, body) => {
-	return apiCalls.put(endpoint, body)
-})
-Cypress.Commands.add('deleteRequest', (endpoint) => {
-	return apiCalls.delete(endpoint)
+Cypress.Commands.add('getRequest', (endpoint) => {
+    return apiCalls.get(endpoint)
 })
 
-Cypress.Commands.add('uiLogin', (credentials)=>{
-	loginHandler(credentials)
+Cypress.Commands.add('deleteRequest', (endpoint) => {
+    return apiCalls.delete(endpoint)
+})
+
+Cypress.Commands.add('putRequest', (endpoint, body) => {
+    return apiCalls.put(endpoint, body)
+})
+
+Cypress.Commands.add('uiLogin', (credentials) => {
+    loginHandler(credentials)
 })
