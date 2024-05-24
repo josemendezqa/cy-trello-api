@@ -3,21 +3,21 @@ import { ButtonComponent } from '../../../components/button-component'
 import { InputComponent } from '../../../components/input-component'
 import { getDevEmail, getDevPassword } from '../../../../../../config/environment-handler';
 
-const loginButtonLocator = "[data-uuid$='_login']"
-
 export class LoginPage {
 	constructor(email = getDevEmail(), password = getDevPassword()) {
-		this.LoginButton = new ButtonComponent(LoginLocators.LOGIN_BUTTON)
+		this.TrelloLoginButton = new ButtonComponent(LoginLocators.TRELLO_LOGIN_BUTTON)
+		this.AtlassianLoginButton = new ButtonComponent(LoginLocators.ATLASSIAN_LOGIN_BUTTON)
 		this.GoogleButton = new ButtonComponent(LoginLocators.GOOGLE_BUTTON)
 		this.EmailInput = new InputComponent(LoginLocators.EMAIL_INPUT)
 		this.PasswordInput = new InputComponent(LoginLocators.PASSWORD_INPUT)
+		this.ContinueButton = new ButtonComponent(LoginLocators.CONTINUE_BUTTON)
 		this.email = email
 		this.password = password
 	}
 
 	navigateToLoginPage() {
 		cy.visit('https://trello.com/')
-		cy.get(loginButtonLocator).click()
+		cy.get(this.TrelloLoginButton.locator).click()
 	}
 
 	login() {
@@ -25,20 +25,27 @@ export class LoginPage {
 		//cy.get(loginButtonLocator).click()
 		const emailInputSelector = this.EmailInput.locator;
         const passwordInputSelector = this.PasswordInput.locator;
-		const userEmail = this.email
-		const userPassword = this.password
+		const atlassianLoginButton = this.AtlassianLoginButton.locator;
+		const continueButton = this.ContinueButton.locator;
 
+		const loginLocators = {
+			"emailInputSelector": this.EmailInput.locator,
+			"passwordInputSelector": this.PasswordInput.locator,
+			"atlassianLoginButton": this.AtlassianLoginButton.locator,
+			"continueButton": this.ContinueButton.locator	
+		}
+	
 		const userCredentials = {
 			"userEmail" : this.email,
 			"userPassword" : this.password
 		} 
 
-		cy.origin('https://id.atlassian.com', { args: { emailInputSelector, passwordInputSelector, userCredentials} }, ({ emailInputSelector, passwordInputSelector, userCredentials}) => {
+		cy.origin('https://id.atlassian.com', { args: { loginLocators, userCredentials} }, ({ loginLocators, userCredentials}) => {
 
-			cy.get(emailInputSelector).type(userCredentials.userEmail)
-			cy.contains('Continue').click()
-			cy.get(passwordInputSelector).type(userCredentials.userPassword)
-			cy.get('#login-submit').click({force: true})
-				})
+			cy.get(loginLocators.emailInputSelector).type(userCredentials.userEmail)
+			cy.contains(loginLocators.continueButton).click()
+			cy.get(loginLocators.passwordInputSelector).type(userCredentials.userPassword)
+			cy.get(loginLocators.atlassianLoginButton).click({force: true})
+		})
 	}
 }
