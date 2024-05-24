@@ -5,4 +5,5 @@ export const LoginLocators = {
 	GOOGLE_BUTTON:
 		"[data-testid='social-login-button-row'] button[id='google-auth-button']",
 	EMAIL_INPUT: '[data-testid="username"]',
+	PASSWORD_INPUT: '[data-testid="password"]'
 }
