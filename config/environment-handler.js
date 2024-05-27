@@ -1,16 +1,19 @@
-const dev = require('./dev.json');
+const credentials = require('./dev.json');
 
 exports.getEnv = function (envSelected) {
     let environmentList = {
-        dev: dev
+        'dev': credentials
     };
-    return environmentList[envSelected] || environmentList.dev;
+    return environmentList[envSelected] || environmentList['dev'];
 };
 
+
+/*
 exports.getDevEmail = function () {
-    return dev.userName; // Assuming 'userName' contains the email address
+    return credentials.userName; // Assuming 'userName' contains the email address
 };
 
 exports.getDevPassword = function () {
-    return dev.userPassword; // Assuming 'userName' contains the email address
+    return credentials.userPassword; // Assuming 'userName' contains the email address
 };
+*/

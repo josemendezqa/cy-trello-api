@@ -8,5 +8,4 @@ export const LoginLocators = {
 	EMAIL_INPUT: "[data-testid='username']",
 	PASSWORD_INPUT: "[data-testid='password']",
 	CONTINUE_BUTTON: "Continue"
-
 }

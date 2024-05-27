@@ -25,6 +25,7 @@ module.exports = defineConfig({
 			require('@cypress/grep/src/plugin')(config)
 
 			config.env.envCredentials = getEnv(config.env.envSelected)
+			config.env.credentials = getEnv(config.env.envSelected.credentials)
 
 			return config
 		},
