@@ -1,0 +1,8 @@
+{
+    "baseUrl": "https://api.trello.com",
+    "apiToken": "ATTAaa0a3e118da8914edcd7982318ee93abbfe17549c1412ef58aa220237f6ef9d6A108439D",
+    "apiKey": "f67ad04141e131370165b7d6c17450fa",
+    "envName":"Dev",
+    "userName":"josemendez.qaengineer@gmail.com",
+    "userPassword":"123Queso!"
+}
