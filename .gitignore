@@ -13,3 +13,4 @@ xunit.xml
 package-lock.json
 .DS_Store
 /cypress/downloads/
+config/dev.json
